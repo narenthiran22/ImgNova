@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    {% load static %}
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="ImageNova - Discover and search for stunning images."
+    />
+    <meta name="author" content="ImageNova" />
+    <meta name="robots" content="index, follow" />
+    <meta property="og:title" content="ImageNova - Search for Images" />
+    <meta
+      property="og:description"
+      content="Find the perfect images for your projects or inspiration with ImageNova."
+    />
+    <meta property="og:image" content="{% static 'imagenova.jpg' %}" />
+    <meta property="og:url" content="" />
+    <meta name="twitter:card" content="{% static 'imagenova.jpg' %}" />
+    <meta name="twitter:title" content="ImageNova - Search for Images" />
+    <meta
+      name="twitter:description"
+      content="Discover the best images for all your needs."
+    />
+    <meta name="twitter:image" content="{% static 'imagenova.jpg' %}" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>ImageNova - Search for Images</title>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link href="{% static 'styles.css' %}" rel="stylesheet" />
+    <link rel="icon" href="{% static 'imagenova.jpg' %}" type="image/x-icon" />
+    <link rel="apple-touch-icon" href="{% static 'imagenova.jpg' %}" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  </head>
+
+  <body class="min-h-screen bg-gray-50 py-4 px-2 sm:px-6 lg:px-8">
+    {% if error %}
+    <div
+      class="bg-red-500 text-white p-4 rounded-lg border border-red-700"
+      role="alert"
+    >
+      {{ error }}
+    </div>
+    {% endif %}
+
+    <div class="max-w-3xl mx-auto">
+      <h1 class="text-3xl sm:text-4xl font-bold text-center text-gray-900 mb-6">
+        Search for Images
+      </h1>
+
+      <form
+        method="POST"
+        action="{% url 'analyze' %}"
+        class="space-y-6 bg-white p-6 rounded-lg shadow-lg"
+      >
+        {% csrf_token %}
+        <div class="space-y-3">
+          <label
+            for="input_text"
+            class="block text-sm font-medium text-gray-700"
+            >Enter Text:</label
+          >
+          <input
+            type="text"
+            name="input_text"
+            id="input_text"
+            value="{% if search_query %}{{ search_query }}{% else %}{% endif %}"
+            required
+            class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition duration-150"
+            placeholder="What are you looking for?"
+          />
+        </div>
+
+<div class="space-y-4">
+  <label class="block text-sm font-medium text-gray-700">Filters:</label>
+  <div class="flex gap-4 overflow-x-auto scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-200">
+    <div class="flex items-center">
+      <input
+        type="checkbox"
+        name="filter_type"
+        value="hd"
+        id="filter_hd"
+        class="filter-checkbox"
+        {% if 'hd' in request.POST.filter_type %}checked{% endif %}
+      >
+      <label for="filter_hd" class="filter-label cursor-pointer px-4 py-2 rounded-full border border-gray-300 text-sm font-medium uppercase tracking-wide inline-block hover:bg-gray-50 ">HD</label>
+    </div>
+    <div class="flex items-center">
+      <input
+        type="checkbox"
+        name="filter_type"
+        value="art"
+        id="filter_art"
+        class=" filter-checkbox"
+        {% if 'art' in request.POST.filter_type %}checked{% endif %}
+      >
+      <label for="filter_art"  class="filter-label cursor-pointer px-4 py-2 rounded-full border border-gray-300 text-sm font-medium uppercase tracking-wide inline-block hover:bg-gray-50 ">Art</label>
+    </div>
+    <div class="flex items-center">
+      <input
+        type="checkbox"
+        name="filter_type"
+        value="painting"
+        id="filter_painting"
+        class="filter-checkbox"
+        {% if 'painting' in request.POST.filter_type %}checked{% endif %}
+      >
+      <label for="filter_painting"  class="filter-label cursor-pointer px-4 py-2 rounded-full border border-gray-300 text-sm font-medium uppercase tracking-wide inline-block hover:bg-gray-50 ">Painting</label>
+    </div>
+    <div class="flex items-center">
+      <input
+        type="checkbox"
+        name="filter_type"
+        value="illustration"
+        id="filter_illustration"
+        class=" filter-checkbox"
+        {% if 'illustration' in request.POST.filter_type %}checked{% endif %}
+      >
+      <label for="filter_illustration"  class="filter-label cursor-pointer px-4 py-2 rounded-full border border-gray-300 text-sm font-medium uppercase tracking-wide inline-block hover:bg-gray-50 ">Illustration</label>
+    </div>
+    <div class="flex items-center">
+      <input
+        type="checkbox"
+        name="filter_type"
+        value="png"
+        id="filter_png"
+        class=" filter-checkbox"
+        {% if 'png' in request.POST.filter_type %}checked{% endif %}
+      >
+      <label for="filter_png"  class="filter-label cursor-pointer px-4 py-2 rounded-full border border-gray-300 text-sm font-medium uppercase tracking-wide inline-block hover:bg-gray-50 ">PNG</label>
+    </div>
+    <div class="flex items-center">
+      <input
+        type="checkbox"
+        name="filter_type"
+        value="gif"
+        id="filter_gif"
+        class="filter-checkbox"
+        {% if 'gif' in request.POST.filter_type %}checked{% endif %}
+      >
+      <label for="filter_gif" class="filter-label cursor-pointer px-4 py-2 rounded-full border border-gray-300 text-sm font-medium uppercase tracking-wide inline-block hover:bg-gray-50 ">GIF</label>
+    </div>
+    <div class="flex items-center">
+      <input
+        type="checkbox"
+        name="filter_type"
+        value="ai"
+        id="filter_ai"
+        class="filter-checkbox"
+        {% if 'ai' in request.POST.filter_type %}checked{% endif %}
+      >
+      <label for="filter_ai" class="filter-label cursor-pointer px-4 py-2 rounded-full border border-gray-300 text-sm font-medium uppercase tracking-wide inline-block hover:bg-gray-50 ">AI</label>
+    </div>
+  </div>
+</div>
+
+
+        <button
+          type="submit"
+          class="w-full bg-indigo-600 text-white py-3 px-6 rounded-lg font-medium hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition duration-150"
+        >
+          Search
+        </button>
+      </form>
+
+      {% if search_results %}
+      <div class="mt-8">
+        <h2 class="text-xl sm:text-2xl font-bold text-gray-900 mb-6">
+          Search Results for: {{ search_query }}
+        </h2>
+        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
+          {% for result in search_results %}
+          <div
+            class="relative rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 images"
+          >
+            <img
+              src="{{ result }}"
+              alt="Image Result"
+              class="w-full h-48 object-cover preview-image cursor-pointer rounded-md hover:scale-105 transition-transform duration-300"
+              onclick="openModal('{{ result }}')"
+            />
+            <!-- Directly download image when clicking the download icon -->
+            {% comment %} <a href="{{ result }}" class="download-icon" download >
+              <i class="fas fa-download"></i> {% endcomment %}
+            </a>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+      {% endif %}
+    </div>
+
+    <!-- Modal -->
+    <div
+      id="imageModal"
+      class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden"
+    >
+      <div
+        class="bg-white rounded-lg overflow-hidden shadow-lg max-w-md w-full relative"
+      >
+        <button
+          id="closeModal"
+          class="absolute top-3 right-3 text-gray-500 hover:text-gray-700 text-2xl"
+          onclick="closeModal()"
+          aria-label="Close Modal"
+        >
+          &times;
+        </button>
+        <img id="modalImage" src="" alt="Preview" class="w-full h-auto z-10" />
+      </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="{% static 'script.js' %}"></script>
+    <script>
+      function downloadImage(url, filename) {
+        const link = document.createElement('a');
+        link.href = url;
+        link.download = filename;
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+      }
+    </script>
+  </body>
+</html>
