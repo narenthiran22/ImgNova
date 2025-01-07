@@ -110,26 +110,89 @@
           />
         </div>
 
-        <div class="space-y-4">
-          <label class="block text-sm font-medium text-gray-700">Filters:</label>
-          <div class="flex gap-4 overflow-x-auto scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-200">
-            <div class="flex items-center">
-              <input
-                type="checkbox"
-                name="filter_type"
-                value="hd"
-                id="filter_hd"
-                class="filter-checkbox"
-                {% if 'hd' in request.POST.filter_type %}checked{% endif %}
-              />
-              <label
-                for="filter_hd"
-                class="filter-label cursor-pointer px-4 py-2 rounded-full border border-gray-300 text-sm font-medium uppercase tracking-wide inline-block hover:bg-gray-50"
-              >HD</label>
-            </div>
-            <!-- Additional Filters -->
-          </div>
-        </div>
+<div class="space-y-4">
+  <label class="block text-sm font-medium text-gray-700">Filters:</label>
+  <div class="flex gap-4 overflow-x-auto scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-200">
+    <div class="flex items-center">
+      <input
+        type="checkbox"
+        name="filter_type"
+        value="hd"
+        id="filter_hd"
+        class="filter-checkbox"
+        {% if 'hd' in request.POST.filter_type %}checked{% endif %}
+      >
+      <label for="filter_hd" class="filter-label cursor-pointer px-4 py-2 rounded-full border border-gray-300 text-sm font-medium uppercase tracking-wide inline-block hover:bg-gray-50 ">HD</label>
+    </div>
+    <div class="flex items-center">
+      <input
+        type="checkbox"
+        name="filter_type"
+        value="art"
+        id="filter_art"
+        class=" filter-checkbox"
+        {% if 'art' in request.POST.filter_type %}checked{% endif %}
+      >
+      <label for="filter_art"  class="filter-label cursor-pointer px-4 py-2 rounded-full border border-gray-300 text-sm font-medium uppercase tracking-wide inline-block hover:bg-gray-50 ">Art</label>
+    </div>
+    <div class="flex items-center">
+      <input
+        type="checkbox"
+        name="filter_type"
+        value="painting"
+        id="filter_painting"
+        class="filter-checkbox"
+        {% if 'painting' in request.POST.filter_type %}checked{% endif %}
+      >
+      <label for="filter_painting"  class="filter-label cursor-pointer px-4 py-2 rounded-full border border-gray-300 text-sm font-medium uppercase tracking-wide inline-block hover:bg-gray-50 ">Painting</label>
+    </div>
+    <div class="flex items-center">
+      <input
+        type="checkbox"
+        name="filter_type"
+        value="illustration"
+        id="filter_illustration"
+        class=" filter-checkbox"
+        {% if 'illustration' in request.POST.filter_type %}checked{% endif %}
+      >
+      <label for="filter_illustration"  class="filter-label cursor-pointer px-4 py-2 rounded-full border border-gray-300 text-sm font-medium uppercase tracking-wide inline-block hover:bg-gray-50 ">Illustration</label>
+    </div>
+    <div class="flex items-center">
+      <input
+        type="checkbox"
+        name="filter_type"
+        value="png"
+        id="filter_png"
+        class=" filter-checkbox"
+        {% if 'png' in request.POST.filter_type %}checked{% endif %}
+      >
+      <label for="filter_png"  class="filter-label cursor-pointer px-4 py-2 rounded-full border border-gray-300 text-sm font-medium uppercase tracking-wide inline-block hover:bg-gray-50 ">PNG</label>
+    </div>
+    <div class="flex items-center">
+      <input
+        type="checkbox"
+        name="filter_type"
+        value="gif"
+        id="filter_gif"
+        class="filter-checkbox"
+        {% if 'gif' in request.POST.filter_type %}checked{% endif %}
+      >
+      <label for="filter_gif" class="filter-label cursor-pointer px-4 py-2 rounded-full border border-gray-300 text-sm font-medium uppercase tracking-wide inline-block hover:bg-gray-50 ">GIF</label>
+    </div>
+    <div class="flex items-center">
+      <input
+        type="checkbox"
+        name="filter_type"
+        value="ai"
+        id="filter_ai"
+        class="filter-checkbox"
+        {% if 'ai' in request.POST.filter_type %}checked{% endif %}
+      >
+      <label for="filter_ai" class="filter-label cursor-pointer px-4 py-2 rounded-full border border-gray-300 text-sm font-medium uppercase tracking-wide inline-block hover:bg-gray-50 ">AI</label>
+    </div>
+  </div>
+</div>
+
 
         <button
           type="submit"
