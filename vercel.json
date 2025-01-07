@@ -11,6 +11,10 @@
         {
             "src": "/(.*)",
             "dest": "imagenova/wsgi.py"
+        },
+        {
+            "src": "/static/(.*)",
+            "dest": "/static/$1"
         }
     ]
 }
