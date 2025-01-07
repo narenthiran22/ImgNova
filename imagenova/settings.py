@@ -5,7 +5,7 @@ import os
 from decouple import config
 
 # settings.py
-ALLOWED_HOSTS = ['img-nova.vercel.app', 'localhost']
+ALLOWED_HOSTS = ['.vercel.app']
 APPEND_SLASH = False
 
 
