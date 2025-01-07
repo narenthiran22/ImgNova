@@ -18,8 +18,6 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = config('SECRET_KEY', default='django-insecure-3w+i)8m1!2dr2#(ph=t3w2p*q7(y0ixpf!ge!9-r_94k1bm852')
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = config('DEBUG', default=True, cast=bool)
 
 # Application definition
 INSTALLED_APPS = [
@@ -99,6 +97,7 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
+DEBUG = False
 STATIC_URL = 'static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static"),  # Ensures that static is found in the root directory
